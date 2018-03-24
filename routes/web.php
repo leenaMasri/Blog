@@ -45,7 +45,13 @@ Route::get('/about', function () {// put '/' is optional
 });
 
 
+Route::get('/', 'PostsController@index');
+Route::get('/posts/{post}', 'PostsController@show');
+// in this case we need controller==postsController
+//eloquent model== Post
+//migration== create_post_table
+
 
 Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');
+Route::get('/tasks/{task}', 'TasksController@show');//{id} this is called wildcard in larvel for a specific taskNt
 
