@@ -9,12 +9,14 @@ class PostsController extends Controller
 {
     public function index()//will respond to /posts
     {
-        return view('posts.index');
+        $posts= Post::latest()->get();
+        return view('posts.index', compact('posts'));//index now have acesss to a set of posts
     }
 
-    public function show()//GET /posts/id
+    public function show(Post $post)//GET /posts/id
     {
-        return view('posts.show');
+        //$post = Post::find($id);
+        return view('posts.show', compact('post'));// we can use route binding
     }
 
     public function create()///posts/create
@@ -25,20 +27,27 @@ class PostsController extends Controller
     public function store()
     {
         //create a new post
-        $post = new \App\Post;//$post new Post;
+       // $post = new \App\Post;//$post new Post;
         /*
         $post->title= request('title');
         $post->body=  request('body');*/
         // another way you give it the fields & it will be automatically saving it
-        Post::create([
-            'title' => request('title'),
-            'body'  => request('body')
 
 
-        ]);
+
+
         //save it to the database
      //  $post->save();
         //redirect to the homepage
+        $this->validate(request(),[
+            'title' => 'required',
+            'body'  => 'required'
+
+            ]);
+
+
+
+        Post::create(request(['title','body']));
         return redirect('/');
 
 
