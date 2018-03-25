@@ -13,6 +13,9 @@
 |
 */
 
+Route::get('/about', function () {// put '/' is optional
+    return view('about');
+});
 
 /*Route::get('/tasks', function () {
 
@@ -40,18 +43,24 @@ Route::get('/tasks/{task}',function ($id){
 });*/
 
 
-Route::get('/about', function () {// put '/' is optional
-    return view('about');
-});
 
 
-Route::get('/', 'PostsController@index');
-Route::get('/posts/{post}', 'PostsController@show');
+
+//Route::get('/posts/{post}', 'PostsController@show');
 // in this case we need controller==postsController
 //eloquent model== Post
 //migration== create_post_table
 
 
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');//{id} this is called wildcard in larvel for a specific taskNt
+//Route::get('/tasks', 'TasksController@index');
+//Route::get('/tasks/{task}', 'TasksController@show');//{id} this is called wildcard in larvel for a specific task
 
+///get::posts/
+/// get::posts/create
+/// POST//posts::===storing on the database.
+/// get/posts/{id}/edit
+/// PATCH/posts/{id}
+
+Route::get('/', 'PostsController@index');
+Route::get('/posts/create', 'PostsController@create');
+Route::post('/posts','PostsController@store');
