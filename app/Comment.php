@@ -11,4 +11,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+    //comment belong to the user. $comment->user->name
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

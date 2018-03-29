@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.appM')
 
 
 @section('content')
@@ -25,7 +25,6 @@
 
         </div>
 
-         @include('layouts.errors')
     </form>
 
     </div>

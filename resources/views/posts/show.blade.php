@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.appM')
 
 
 @section('content')
@@ -36,9 +36,12 @@
                         <button type="submit" class="btn btn-primary" >Add Comment</button>
 
                     </div>
+
                 </form>
             </div>
+
         </div>
+
 
     </div>
 

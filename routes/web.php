@@ -62,7 +62,13 @@ Route::get('/tasks/{task}',function ($id){
 /// PATCH/posts/{id}
 
 Route::get('/', 'PostsController@index');
-Route::get('/posts/create', 'PostsController@create');
-Route::post('/posts','PostsController@store');
-Route::get('/posts/{post}', 'PostsController@show');
 Route::post('/posts/{post}/comments','CommentsController@store');
+Route::get('service/post/view', 'PostsController@view');
+Route::get('service/post/create', 'PostsController@create');
+Route::get('service/post/update', 'PostsController@update');
+Route::get('service/post/destroy', 'PostsController@destroy');
+Route::resource('posts','PostsController');
+Route::post('comment/{comment}');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

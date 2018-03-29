@@ -12,7 +12,8 @@ class CommentsController extends Controller
     {
         Comment::create([
             'body' => request('body'),
-            'post_id' => $post->id
+            'post_id' => $post->id,
+            'user_id' => auth()->id()
         ]);
 
         return back();
